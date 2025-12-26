@@ -1,3 +1,70 @@
+import telebot
+
+BOT_TOKEN = "8289292795:AAHqCM2yUdPWCD_ajrdoeF8uGLSYa56BP4Q"   # bot admin hona chahiye sab channels me
+bot = telebot.TeleBot(BOT_TOKEN)
+
+CHANNELS = [
+    {
+        "id": -1003192514114,
+        "name": "Obito Stuffs",
+        "link": "https://t.me/+CkmoExyvc9UwODM1"
+    },
+    {
+        "id": -1002980695537,
+        "name": "Obito stuffs main",
+        "link": "https://t.me/+SHn6uFPFcAo3Yzc1"
+    },
+    {
+        "id": -1002570638747,
+        "name": "Kamui Gc",
+        "link": "https://t.me/LuffyGc"
+    }
+]
+
+def not_joined(uid):
+    missing = []
+    for ch in CHANNELS:
+        try:
+            status = bot.get_chat_member(ch["id"], uid).status
+            if status not in ["member", "administrator", "creator"]:
+                missing.append(ch)
+        except:
+            missing.append(ch)
+    return missing
+
+
+# ================= TOOL START =================
+
+print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+print(" 🔐 Obito Force Join System ")
+print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+
+user_id = int(input("Enter your Telegram User ID: ").strip())
+
+missing = not_joined(user_id)
+
+if missing:
+    print("\n❌ You are not joined in following channel(s):\n")
+    for i, ch in enumerate(missing, 1):
+        print(f"{i}. {ch['name']}")
+
+    choice = input("\n➡️ Enter 1 to continue to channel: ").strip()
+
+    if choice == "1":
+        print("\n🔔 Join the channel(s) below:\n")
+        for ch in missing:
+            print(f"{ch['name']}")
+            print(ch["link"])
+            print("-" * 30)
+
+        print("\n✅ Join all channels then run tool again")
+    else:
+        print("❌ Invalid input")
+    exit()
+
+# ✅ TOOL UNLOCK
+print("\n✅ All channels joined")
+print("🚀 Tool Started Successfully")
 
 import hashlib
 import importlib
