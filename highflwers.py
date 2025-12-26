@@ -1,6 +1,8 @@
 import telebot
+import webbrowser
+import time
 
-BOT_TOKEN = "8289292795:AAHqCM2yUdPWCD_ajrdoeF8uGLSYa56BP4Q"   # bot admin hona chahiye sab channels me
+BOT_TOKEN = "8289292795:AAHqCM2yUdPWCD_ajrdoeF8uGLSYa56BP4Q"   # bot admin hona chahiye
 bot = telebot.TeleBot(BOT_TOKEN)
 
 CHANNELS = [
@@ -36,7 +38,7 @@ def not_joined(uid):
 # ================= TOOL START =================
 
 print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-print(" 🔐 Obito Force Join System ")
+print(" 🔐 Obito Force Join Tool ")
 print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 
 user_id = int(input("Enter your Telegram User ID: ").strip())
@@ -51,21 +53,20 @@ if missing:
     choice = input("\n➡️ Enter 1 to continue to channel: ").strip()
 
     if choice == "1":
-        print("\n🔔 Join the channel(s) below:\n")
+        print("\n🔄 Redirecting to required channel(s)...\n")
         for ch in missing:
-            print(f"{ch['name']}")
-            print(ch["link"])
-            print("-" * 30)
+            webbrowser.open(ch["link"])
+            time.sleep(2)   # thoda gap taaki sab open ho jaye
 
-        print("\n✅ Join all channels then run tool again")
+        print("✅ Join all channels and run tool again")
     else:
         print("❌ Invalid input")
+
     exit()
 
 # ✅ TOOL UNLOCK
 print("\n✅ All channels joined")
 print("🚀 Tool Started Successfully")
-
 import hashlib
 import importlib
 import json
