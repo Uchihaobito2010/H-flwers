@@ -178,7 +178,7 @@ while True:
     print(f"{Fore.GREEN}✅ Chat ID valid ✔\n")
     break
 while True:
-    token = getpass(f"{Fore.CYAN}🤖 BOT TOKEN ▶ {Style.RESET_ALL}").strip()
+    token = input(f"{Fore.CYAN}🤖 BOT TOKEN ▶ {Style.RESET_ALL}").strip()
 
     if not token:
         print(f"{Fore.RED}❌ Bot Token blank or invalid\n")
